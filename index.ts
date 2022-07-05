@@ -4,6 +4,7 @@ import "express-async-errors";
 import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
 import {AdRecord} from "./records/ad.record";
+import {adRouter} from "./routers/ad.router";
 
 const app = express();
 
@@ -16,14 +17,7 @@ app.use(rateLimit({
     max: 100,
 }))
 
-
-app.get('/', async (req, res) =>{
-
-    const ad = await AdRecord.getOne("1")
-
-    res.send(ad);
-});
-
+app.use('/ad', adRouter);
 
 app.use(handleError);
 
