@@ -1,4 +1,9 @@
 import {AdRecord} from "../records/ad.record";
+import { pool } from "../utils/db";
+
+afterAll(async () => {
+   await pool.end();
+});
 
 const defaultObj = {
     id_contractor: '1',
@@ -18,5 +23,19 @@ test('AdRecord returns data from database for one entry', async () => {
 test('AdRecord return null from database for unxeisting entry.', async () => {
     const ad = await AdRecord.getOne('---');
     expect(ad).toBeNull();
+});
+test('Dupa', async () => {
+    const ad = await AdRecord.getAll();
+    console.log(ad)
+})
+
+test('AdRecord.insert returns new UUID', async () => {
+    const ad = new AdRecord({
+        name_contractor: 'Kubisz',
+        email_contractor: 'Kubisz@wp.pl'
+    });
+   await ad.insert();
+   expect(ad.id_contractor).toBeDefined();
+   expect(typeof ad.id_contractor).toBe('string');
 })
 

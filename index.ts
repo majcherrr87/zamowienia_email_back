@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import "express-async-errors";
-import {handleError, ValidationError} from "./utils/errors";
+import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
 import {AdRecord} from "./records/ad.record";
 
