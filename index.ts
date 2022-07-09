@@ -4,7 +4,7 @@ import "express-async-errors";
 import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
 import {AdRecord} from "./records/ad.record";
-import {adRouter} from "./routers/ad.router";
+import {contractorsRouter} from "./routers/contractors.router";
 
 const app = express();
 
@@ -14,10 +14,10 @@ app.use(cors({
 app.use(json());
 app.use(rateLimit({
     windowMs: 5 * 60 * 1000,
-    max: 100,
+    max: 200,
 }))
 
-app.use('/ad', adRouter);
+app.use('/contractors', contractorsRouter);
 
 app.use(handleError);
 

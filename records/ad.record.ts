@@ -11,6 +11,8 @@ export class AdRecord implements AdEntity {
     id_contractor?: string;
     name_contractor: string;
     email_contractor: string;
+    address_contractor: string;
+    phone_contractor: string;
 
 
     constructor(obj: AdEntity) {
@@ -18,6 +20,8 @@ export class AdRecord implements AdEntity {
         this.id_contractor = obj.id_contractor;
         this.name_contractor = obj.name_contractor;
         this.email_contractor = obj.email_contractor;
+        this.address_contractor = obj.address_contractor;
+        this.phone_contractor = obj.phone_contractor;
 
     }
      static async getOne(id_contractor: string): Promise<AdRecord | null> {
@@ -28,7 +32,7 @@ export class AdRecord implements AdEntity {
      }
 
      static async getAll(): Promise<AdEntity_simple[]> {
-        const [results] = await pool.execute('SELECT `name_contractor` FROM contractor') as AdRecordResult_simple;
+        const [results] = await pool.execute('SELECT * FROM `contractor`') as AdRecordResult_simple;
         return results
      }
      async insert(): Promise<void>{
@@ -37,7 +41,7 @@ export class AdRecord implements AdEntity {
         }else{
             throw new Error('Cannot insert something that is already inserted')
         }
-        await pool.execute('INSERT INTO `contractor` (`id_contractor`, `name_contractor`, `email_contractor`) VALUES (:id_contractor, :name_contractor, :email_contractor)', this);
+        await pool.execute('INSERT INTO `contractor` (`id_contractor`, `name_contractor`, `email_contractor`, `address_contractor`, `phone_contractor`) VALUES (:id_contractor, :name_contractor, :email_contractor, :address_contractor, :address_contractor)', this);
      }
 
 }

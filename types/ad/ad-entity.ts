@@ -7,4 +7,6 @@ export interface AdEntity_simple {
 export interface AdEntity extends AdEntity_simple{
     id_contractor?: string;
     email_contractor: string;
+    address_contractor: string;
+    phone_contractor: string;
 }
