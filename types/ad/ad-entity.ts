@@ -9,4 +9,8 @@ export interface AdEntity extends AdEntity_simple{
     email_contractor: string;
     address_contractor: string;
     phone_contractor: string;
+    id_product?: string;
+    name_product: string;
+    choice_packaging: string;
+
 }
