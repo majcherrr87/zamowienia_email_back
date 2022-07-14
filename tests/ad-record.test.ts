@@ -29,13 +29,5 @@ test('Dupa', async () => {
     console.log(ad)
 })
 
-test('AdRecord.insert returns new UUID', async () => {
-    const ad = new AdRecord({
-        name_contractor: 'Kubisz',
-        email_contractor: 'Kubisz@wp.pl'
-    });
-   await ad.insert();
-   expect(ad.id_contractor).toBeDefined();
-   expect(typeof ad.id_contractor).toBe('string');
-})
+
 
