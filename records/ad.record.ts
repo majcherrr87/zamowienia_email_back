@@ -81,5 +81,9 @@ export class AdRecord implements AdEntity {
         const [results] = await pool.execute("UPDATE `contractor` SET `name_contractor`= :name_contractor, `email_contractor` = :email_contractor, `address_contractor` = :address_contractor, `phone_contractor` = :phone_contractor WHERE `id_contractor`  = :id_contractor", this) ;
         return results;
     }
+    async updateProduct() {
+        const [results] = await pool.execute("UPDATE `products` SET `name_product`= :name_product, `choice_packaging` = :choice_packaging  WHERE `id_product` = :id_product", this) ;
+        return results;
+    }
 
 }

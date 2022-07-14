@@ -40,3 +40,8 @@ export const contractorsRouter = Router()
         await put.update();
         res.json(put);
     })
+    .put('/product/',async (req,res) => {
+        const put = new AdRecord(req.body);
+        await put.updateProduct();
+        res.json(put);
+    })
