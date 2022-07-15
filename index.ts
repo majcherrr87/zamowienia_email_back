@@ -5,13 +5,14 @@ import {handleError} from "./utils/errors";
 import rateLimit from "express-rate-limit";
 
 import {contractorsRouter } from "./routers/contractors.router";
+import {config} from "./config/config";
 
 
 
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: config.corsOrigin,
 }));
 app.use(json());
 app.use(rateLimit({
